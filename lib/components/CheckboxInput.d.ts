@@ -7,5 +7,5 @@ import { TTextErrorConfig } from '../types/TErrorConfig';
 export default class CheckboxInput extends Input {
     private _errorConfig;
     constructor(input: HTMLInputElement, errorConfig: TTextErrorConfig);
-    validate(): boolean;
+    protected _validateImpl(): boolean;
 }

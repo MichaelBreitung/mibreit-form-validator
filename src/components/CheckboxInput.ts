@@ -14,14 +14,12 @@ export default class CheckboxInput extends Input {
     this._errorConfig = errorConfig;
   }
 
-  validate(): boolean {
-    console.log("CheckboxInput#validate");
+  protected _validateImpl(): boolean {
+    console.log('CheckboxInput#validate');
     if (this._input.checked === false) {
       super._setLastError(this._errorConfig.required);
-      super._showLastError();
       return false;
-    } 
-    else{
+    } else {
       return true;
     }
   }

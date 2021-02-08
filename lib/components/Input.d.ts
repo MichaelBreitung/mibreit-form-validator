@@ -8,8 +8,9 @@ export default abstract class Input implements IInputValidator {
     private _errorElement;
     private _lastError;
     constructor(input: HTMLInputElement);
-    abstract validate(): boolean;
+    validate(): boolean;
     getLastError(): string | null;
+    protected abstract _validateImpl(): boolean;
     protected _showLastError(): void;
     protected _hideLastError(): void;
     protected _setLastError(error: string): void;

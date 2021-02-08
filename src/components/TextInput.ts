@@ -14,14 +14,11 @@ export default class TextInput extends Input {
     this._errorConfig = errorConfig;
   }
 
-  validate(): boolean {
-    if (this._input.value.length > 0) {      
-      super._clearLastError();
-      super._hideLastError();
+  protected _validateImpl(): boolean {
+    if (this._input.value.length > 0) {
       return true;
     } else {
       super._setLastError(this._errorConfig.required);
-      super._showLastError();
       return false;
     }
   }

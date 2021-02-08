@@ -15,19 +15,15 @@ export default class EmailInput extends Input {
     this._errorConfig = errorConfig;
   }
 
-  validate(): boolean {
-    console.log("EmailInput#validate");
+  protected _validateImpl(): boolean {
+    console.log('EmailInput#validate');
     if (this._input.value.length === 0) {
       super._setLastError(this._errorConfig.required);
-      super._showLastError();
       return false;
     } else if (!ValidationRegex.email.test(this._input.value)) {
       super._setLastError(this._errorConfig.invalid);
-      super._showLastError();
       return false;
     } else {
-      super._clearLastError();
-      super._hideLastError();
       return true;
     }
   }

@@ -7,5 +7,5 @@ import { TEmailErrorConfig } from '../types/TErrorConfig';
 export default class EmailInput extends Input {
     private _errorConfig;
     constructor(input: HTMLInputElement, errorConfig: TEmailErrorConfig);
-    validate(): boolean;
+    protected _validateImpl(): boolean;
 }

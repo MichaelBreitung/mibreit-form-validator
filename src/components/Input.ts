@@ -15,11 +15,22 @@ export default abstract class Input implements IInputValidator {
     this._input = input;
   }
 
-  abstract validate(): boolean;
-
+  validate(): boolean {
+    const valid = this._validateImpl();
+    if (valid) {
+      this._clearLastError();
+      this._hideLastError();      
+    } else {
+      this._showLastError();
+    }
+    return valid;
+  }
+  
   getLastError(): string | null {
     return this._lastError;
   }
+
+  protected abstract _validateImpl(): boolean;
 
   protected _showLastError() {
     if (this._errorElement === null) {
@@ -31,8 +42,7 @@ export default abstract class Input implements IInputValidator {
   }
 
   protected _hideLastError() {
-    if (this._errorElement)
-    {
+    if (this._errorElement) {
       DomTools.removeElement(this._errorElement);
     }
   }
