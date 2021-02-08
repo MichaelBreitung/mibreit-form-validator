@@ -1,6 +1,4 @@
-const { module } = require("./webpack.config");
-
 module.exports = {
-  minifiedLibraryFileName: "mibreitFormValidator.js",
+  minifiedLibraryFileName: "mibreitFormValidator.min.js",
   minifiedLibraryName: "mibreitFormValidator",  
 }
