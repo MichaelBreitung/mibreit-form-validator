@@ -1,5 +1,7 @@
 # Typescript Boilerplate
 
+TODO
+
 ## Resources
 
-https://thoughtbot.com/blog/the-case-for-discriminated-union-types-with-typescript
+Discriminating Typescript Types and type guards: https://thoughtbot.com/blog/the-case-for-discriminated-union-types-with-typescript
