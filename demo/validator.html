@@ -75,6 +75,7 @@
       var validator = mibreitFormValidator.createFormValidator();
       validator.addValidator(mibreitFormValidator.getElement("input[name='email']"), mibreitFormValidator.EInputType.EMAIL, {required: "Providing an email is required", invalid: "Your entered email is not a valid email"});
       validator.addValidator(mibreitFormValidator.getElement("input[name='privacy']"), mibreitFormValidator.EInputType.CHECKBOX, {required: "Agreeing to Policy is mandatory"});
+      validator.addValidator(mibreitFormValidator.getElement("textarea[name='message']"), mibreitFormValidator.EInputType.TEXT, {required: "You have not provided a message"});
       mibreitFormValidator.addClickEventListener(mibreitFormValidator.getElement("input[name='submit']"), function(event) {
         if (!validator.validate())
         {          

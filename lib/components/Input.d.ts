@@ -5,14 +5,11 @@
 import IInputValidator from '../interfaces/IInputValidator';
 export default abstract class Input implements IInputValidator {
     protected _input: HTMLInputElement;
-    private _errorElement;
-    private _lastError;
+    private _error;
     constructor(input: HTMLInputElement);
     validate(): boolean;
-    getLastError(): string | null;
     protected abstract _validateImpl(): boolean;
     protected _showLastError(): void;
     protected _hideLastError(): void;
     protected _setLastError(error: string): void;
-    protected _clearLastError(): void;
 }

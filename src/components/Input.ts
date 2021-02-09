@@ -3,13 +3,12 @@
  * @copyright Michael Breitung Photography (www.mibreit-photo.com)
  */
 
-import { DomTools } from 'mibreit-dom-tools';
 import IInputValidator from '../interfaces/IInputValidator';
+import Error from './Error';
 
 export default abstract class Input implements IInputValidator {
   protected _input: HTMLInputElement;
-  private _errorElement: HTMLElement | null = null;
-  private _lastError: string | null = null;
+  private _error: Error | null = null;
 
   constructor(input: HTMLInputElement) {
     this._input = input;
@@ -18,40 +17,31 @@ export default abstract class Input implements IInputValidator {
   validate(): boolean {
     const valid = this._validateImpl();
     if (valid) {
-      this._clearLastError();
-      this._hideLastError();      
+      this._hideLastError();
     } else {
       this._showLastError();
     }
     return valid;
   }
-  
-  getLastError(): string | null {
-    return this._lastError;
-  }
 
   protected abstract _validateImpl(): boolean;
 
   protected _showLastError() {
-    if (this._errorElement === null) {
-      this._errorElement = DomTools.createElement('span');
-      DomTools.addCssClass(this._errorElement, 'error');
+    if (this._error != null) {
+      this._error.showError();
     }
-    this._errorElement.innerText = this._lastError;
-    DomTools.appendChildElement(this._errorElement, this._input.parentElement);
   }
 
   protected _hideLastError() {
-    if (this._errorElement) {
-      DomTools.removeElement(this._errorElement);
+    if (this._error != null) {
+      this._error.hideError();
     }
   }
 
   protected _setLastError(error: string) {
-    this._lastError = error;
-  }
-
-  protected _clearLastError() {
-    this._lastError = null;
+    if (this._error == null) {
+      this._error = new Error(this._input);
+    }
+    this._error.setLastError(error);
   }
 }

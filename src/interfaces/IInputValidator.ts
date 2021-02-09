@@ -5,6 +5,4 @@
 
 export default interface IInputValidator {
   validate(): boolean;
-
-  getLastError(): string | null;
 }

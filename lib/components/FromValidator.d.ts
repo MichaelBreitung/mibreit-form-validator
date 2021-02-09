@@ -11,6 +11,6 @@ export declare enum EInputType {
 }
 export default class FormValidator implements IFormValidator {
     private _validators;
-    addValidator(input: HTMLInputElement, inputType: EInputType, errorConfig: TErrorConfig): void;
+    addValidator(input: HTMLInputElement | HTMLTextAreaElement, inputType: EInputType, errorConfig: TErrorConfig): void;
     validate(): boolean;
 }
