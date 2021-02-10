@@ -3,7 +3,9 @@
  * @copyright Michael Breitung Photography (www.mibreit-photo.com)
  */
 
-import { createElement, addCssClass, appendChildElement, removeElement } from 'mibreit-dom-tools';
+import { createElement, addCssClass, removeCssClass, appendChildElement, removeElement } from 'mibreit-dom-tools';
+
+const ERROR_CLASS = 'error';
 
 export default class Error {
   protected _element: HTMLElement;
@@ -17,8 +19,9 @@ export default class Error {
   showError() {
     if (this._errorElement === null) {
       this._errorElement = createElement('span');
-      addCssClass(this._errorElement, 'error');
+      addCssClass(this._errorElement, ERROR_CLASS);
     }
+    addCssClass(this._element, ERROR_CLASS);
     this._errorElement.innerText = this._lastError;
     appendChildElement(this._errorElement, this._element.parentElement);
   }
@@ -27,6 +30,7 @@ export default class Error {
     if (this._errorElement) {
       removeElement(this._errorElement);
     }
+    removeCssClass(this._element, ERROR_CLASS);
   }
 
   setLastError(error: string) {
