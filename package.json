@@ -1,13 +1,13 @@
 {
   "name": "mibreit-form-validator",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Allows defining rules for form validation",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
     "build": "webpack --config webpack.config.js",
     "build:dev": "webpack --config webpack.config.dev.js",
-    "build:npm": "webpack --config webpack.config.npm.js"
+    "build:npm": "tsc"
   },
   "keywords": [
     "Typescript"
